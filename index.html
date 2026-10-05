@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CricketX - Live Cricket Scores</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="logo">
+            <div class="logo-ball">
+                <i class="fa-solid fa-baseball"></i>
+            </div>
+            <span>Cricket<span class="green">X</span></span>
+        </div>
+
+        <div class="header-icons">
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <button>
+                <i class="fa-regular fa-bell"></i>
+                <span class="notification-dot"></span>
+            </button>
+        </div>
+
+    </header>
+
+
+    <!-- Top navigation -->
+    <nav class="top-nav">
+
+        <button class="nav-tab active" data-section="home">
+            Home
+        </button>
+
+        <button class="nav-tab" data-section="matches">
+            Matches
+        </button>
+
+        <button class="nav-tab" data-section="series">
+            Series
+        </button>
+
+        <button class="nav-tab" data-section="teams">
+            Teams
+        </button>
+
+    </nav>
+
+
+    <!-- Main content -->
+    <main class="main-container">
+
+        <!-- Home section -->
+        <section id="home" class="page-section active">
+
+            <!-- Live banner -->
+            <div class="live-banner">
+
+                <div>
+                    <span class="live-dot"></span>
+                    <strong>LIVE CRICKET</strong>
+                </div>
+
+                <span>3 Matches Live</span>
+
+            </div>
+
+
+            <!-- Featured match -->
+            <section class="section">
+
+                <div class="section-heading">
+                    <h2>Live Matches</h2>
+                    <button class="view-all" onclick="showSection('matches')">
+                        View All
+                    </button>
+                </div>
+
+
+                <div class="match-card featured">
+
+                    <div class="match-header">
+                        <span>IND vs AUS</span>
+                        <span class="live-label">● LIVE</span>
+                    </div>
+
+                    <div class="series-name">
+                        International Test Series
+                    </div>
+
+
+                    <div class="teams">
+
+                        <div class="team">
+
+                            <div class="team-logo india">
+                                IND
+                            </div>
+
+                            <div>
+                                <h3>India</h3>
+                                <p>1st Innings</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="score">
+                            <strong>287/4</strong>
+                            <span>76.2 Overs</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="teams">
+
+                        <div class="team">
+
+                            <div class="team-logo australia">
+                                AUS
+                            </div>
+
+                            <div>
+                                <h3>Australia</h3>
+                                <p>Yet to bat</p>
+                            </div>
+
+                        </div>
+
+                        <div class="score muted">
+                            <strong>—</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="match-status">
+                        <i class="fa-solid fa-circle-info"></i>
+                        India won the toss and elected to bat
+                    </div>
+
+                    <button class="scorecard-btn" onclick="openScorecard('IND vs AUS')">
+                        View Scorecard
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Upcoming matches -->
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <h2>Upcoming Matches</h2>
+
+                    <button class="view-all" onclick="showSection('matches')">
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="horizontal-scroll">
+
+                    <div class="small-match-card">
+
+                        <span class="match-type">T20</span>
+
+                        <p class="match-time">
+                            Today • 7:30 PM
+                        </p>
+
+                        <div class="small-team">
+                            <span class="mini-logo blue">IND</span>
+                            India
+                        </div>
+
+                        <div class="small-team">
+                            <span class="mini-logo yellow">ENG</span>
+                            England
+                        </div>
+
+                        <button onclick="setReminder(this)">
+                            <i class="fa-regular fa-bell"></i>
+                            Remind Me
+                        </button>
+
+                    </div>
+
+
+                    <div class="small-match-card">
+
+                        <span class="match-type">ODI</span>
+
+                        <p class="match-time">
+                            Tomorrow • 2:00 PM
+                        </p>
+
+                        <div class="small-team">
+                            <span class="mini-logo green-bg">SA</span>
+                            South Africa
+                        </div>
+
+                        <div class="small-team">
+                            <span class="mini-logo blue">NZ</span>
+                            New Zealand
+                        </div>
+
+                        <button onclick="setReminder(this)">
+                            <i class="fa-regular fa-bell"></i>
+                            Remind Me
+                        </button>
+
+                    </div>
+
+
+                    <div class="small-match-card">
+
+                        <span class="match-type">T20</span>
+
+                        <p class="match-time">
+                            Fri • 8:00 PM
+                        </p>
+
+                        <div class="small-team">
+                            <span class="mini-logo purple">WI</span>
+                            West Indies
+                        </div>
+
+                        <div class="small-team">
+                            <span class="mini-logo red">PAK</span>
+                            Pakistan
+                        </div>
+
+                        <button onclick="setReminder(this)">
+                            <i class="fa-regular fa-bell"></i>
+                            Remind Me
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Recent results -->
+            <section class="section">
+
+                <div class="section-heading">
+                    <h2>Recent Results</h2>
+                    <button class="view-all">
+                        View All
+                    </button>
+                </div>
+
+
+                <div class="result-card">
+
+                    <div class="result-title">
+                        <span>ODI • Final</span>
+                        <span class="completed">COMPLETED</span>
+                    </div>
+
+                    <div class="result-team">
+                        <span class="mini-logo blue">IND</span>
+                        India
+                        <strong>312/7</strong>
+                    </div>
+
+                    <div class="result-team">
+                        <span class="mini-logo yellow">ENG</span>
+                        England
+                        <strong>298/10</strong>
+                    </div>
+
+                    <div class="winner">
+                        <i class="fa-solid fa-trophy"></i>
+                        India won by 14 runs
+                    </div>
+
+                </div>
+
+
+                <div class="result-card">
+
+                    <div class="result-title">
+                        <span>T20 • 2nd Match</span>
+                        <span class="completed">COMPLETED</span>
+                    </div>
+
+                    <div class="result-team">
+                        <span class="mini-logo green-bg">SA</span>
+                        South Africa
+                        <strong>178/5</strong>
+                    </div>
+
+                    <div class="result-team">
+                        <span class="mini-logo blue">NZ</span>
+                        New Zealand
+                        <strong>174/8</strong>
+                    </div>
+
+                    <div class="winner">
+                        <i class="fa-solid fa-trophy"></i>
+                        South Africa won by 4 runs
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- Matches page -->
+        <section id="matches" class="page-section">
+
+            <div class="page-title">
+                <h1>Matches</h1>
+                <p>Follow all cricket matches</p>
+            </div>
+
+
+            <div class="filter-buttons">
+
+                <button class="filter active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter" data-filter="live">
+                    Live
+                </button>
+
+                <button class="filter" data-filter="upcoming">
+                    Upcoming
+                </button>
+
+                <button class="filter" data-filter="completed">
+                    Completed
+                </button>
+
+            </div>
+
+
+            <div id="match-list">
+
+                <div class="full-match-card" data-type="live">
+
+                    <div class="full-match-top">
+                        <span>TEST • Day 3</span>
+                        <span class="live-label">● LIVE</span>
+                    </div>
+
+                    <h3>India vs Australia</h3>
+
+                    <div class="full-score-row">
+                        <span>🇮🇳 India</span>
+                        <strong>287/4</strong>
+                    </div>
+
+                    <div class="full-score-row">
+                        <span>🇦🇺 Australia</span>
+                        <strong>Yet to bat</strong>
+                    </div>
+
+                    <p class="match-note">
+                        India batting • 76.2 overs
+                    </p>
+
+                    <button onclick="openScorecard('IND vs AUS')">
+                        Scorecard
+                    </button>
+
+                </div>
+
+
+                <div class="full-match-card" data-type="upcoming">
+
+                    <div class="full-match-top">
+                        <span>T20 • Match 12</span>
+                        <span class="upcoming-label">UPCOMING</span>
+                    </div>
+
+                    <h3>India vs England</h3>
+
+                    <div class="full-score-row">
+                        <span>🇮🇳 India</span>
+                        <strong>—</strong>
+                    </div>
+
+                    <div class="full-score-row">
+                        <span>🏴 England</span>
+                        <strong>—</strong>
+                    </div>
+
+                    <p class="match-note">
+                        Today • 7:30 PM
+                    </p>
+
+                    <button onclick="setReminder(this)">
+                        <i class="fa-regular fa-bell"></i>
+                        Remind Me
+                    </button>
+
+                </div>
+
+
+                <div class="full-match-card" data-type="completed">
+
+                    <div class="full-match-top">
+                        <span>ODI • Final</span>
+                        <span class="completed">COMPLETED</span>
+                    </div>
+
+                    <h3>India vs England</h3>
+
+                    <div class="full-score-row">
+                        <span>🇮🇳 India</span>
+                        <strong>312/7</strong>
+                    </div>
+
+                    <div class="full-score-row">
+                        <span>🏴 England</span>
+                        <strong>298/10</strong>
+                    </div>
+
+                    <p class="match-note winner-text">
+                        India won by 14 runs
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Series -->
+        <section id="series" class="page-section">
+
+            <div class="page-title">
+                <h1>Series</h1>
+                <p>Current cricket tournaments</p>
+            </div>
+
+
+            <div class="series-card">
+
+                <div class="series-icon">
+                    🏆
+                </div>
+
+                <div>
+                    <h3>India vs Australia</h3>
+                    <p>Test Series • 5 Matches</p>
+                    <span>India lead 2 - 1</span>
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+
+            <div class="series-card">
+
+                <div class="series-icon">
+                    🏏
+                </div>
+
+                <div>
+                    <h3>India vs England</h3>
+                    <p>T20 Series • 5 Matches</p>
+                    <span>2 Matches remaining</span>
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+
+            <div class="series-card">
+
+                <div class="series-icon">
+                    🌍
+                </div>
+
+                <div>
+                    <h3>World Cricket Championship</h3>
+                    <p>ODI Tournament</p>
+                    <span>12 Teams</span>
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+        </section>
+
+
+        <!-- Teams -->
+        <section id="teams" class="page-section">
+
+            <div class="page-title">
+                <h1>Teams</h1>
+                <p>International cricket teams</p>
+            </div>
+
+
+            <div class="teams-grid">
+
+                <div class="country-card">
+                    <div class="country-flag">🇮🇳</div>
+                    <h3>India</h3>
+                    <p>IND</p>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-flag">🇦🇺</div>
+                    <h3>Australia</h3>
+                    <p>AUS</p>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-flag">🏴</div>
+                    <h3>England</h3>
+                    <p>ENG</p>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-flag">🇿🇦</div>
+                    <h3>South Africa</h3>
+                    <p>SA</p>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-flag">🇳🇿</div>
+                    <h3>New Zealand</h3>
+                    <p>NZ</p>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-flag">🇵🇰</div>
+                    <h3>Pakistan</h3>
+                    <p>PAK</p>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-flag">🏝️</div>
+                    <h3>West Indies</h3>
+                    <p>WI</p>
+                </div>
+
+                <div class="country-card">
+                    <div class="country-flag">🇱🇰</div>
+                    <h3>Sri Lanka</h3>
+                    <p>SL</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Bottom navigation -->
+    <nav class="bottom-nav">
+
+        <button class="bottom-item active" data-section="home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </button>
+
+        <button class="bottom-item" data-section="matches">
+            <i class="fa-solid fa-baseball-bat-ball"></i>
+            <span>Matches</span>
+        </button>
+
+        <button class="bottom-item" data-section="series">
+            <i class="fa-solid fa-trophy"></i>
+            <span>Series</span>
+        </button>
+
+        <button class="bottom-item" data-section="teams">
+            <i class="fa-solid fa-users"></i>
+            <span>Teams</span>
+        </button>
+
+    </nav>
+
+
+    <!-- Scorecard Modal -->
+    <div id="scorecardModal" class="modal">
+
+        <div class="modal-content">
+
+            <button class="close-modal" onclick="closeScorecard()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h2>India vs Australia</h2>
+
+            <p class="modal-live">
+                ● LIVE • Test Match
+            </p>
+
+
+            <div class="modal-score">
+
+                <div>
+                    <span>🇮🇳 India</span>
+                    <strong>287/4</strong>
+                </div>
+
+                <div>
+                    <span>🇦🇺 Australia</span>
+                    <strong>Yet to bat</strong>
+                </div>
+
+            </div>
+
+
+            <div class="batting-table">
+
+                <div class="table-head">
+                    <span>Batter</span>
+                    <span>R</span>
+                    <span>B</span>
+                    <span>SR</span>
+                </div>
+
+                <div>
+                    <span>V. Kohli *</span>
+                    <span>82</span>
+                    <span>143</span>
+                    <span>57.34</span>
+                </div>
+
+                <div>
+                    <span>S. Gill</span>
+                    <span>64</span>
+                    <span>101</span>
+                    <span>63.36</span>
+                </div>
+
+                <div>
+                    <span>R. Pant</span>
+                    <span>42</span>
+                    <span>58</span>
+                    <span>72.41</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
